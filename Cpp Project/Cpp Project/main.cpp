@@ -7,11 +7,17 @@
 //
 
 #include<iostream>
+#include<stdio.h>
 using namespace std;
 
-int main() {
-    int a,b;
-    cin>>a>>b;
-    cout<<a+b<<endl;
+int& tmp(int x){
+    static int r=0;
+    r+=x;
+    printf("%d\n",x);
+    return r;
+}
+
+int main(){
+    printf("%d %d %d\n",tmp(5),tmp(8),tmp(20));
     return 0;
 }
