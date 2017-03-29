@@ -14,15 +14,11 @@
 #include<memory>
 using namespace std;
 
-int CMP(const void *a,const void *b){
-    return strcmp((char *)a,(char *)b);
-}
-
 int main(){
     //freopen("/Users/Aoi/Documents/Code/C&Cpp/Cpp_Project/Cpp_Project/data.txt","r",stdin);
-    char s[5][11];
-    for(int i=0;i<5;i++) scanf("%s",s[i]);
-    qsort(s,5,sizeof(s[0]),CMP);
-    for(int i=0;i<5;i++) printf("%s\n",s[i]);
+    int n=0;
+    char s[51];
+    while(scanf("%s",s)!=EOF) n++;
+    printf("%d\n",n);
     return 0;
 }
