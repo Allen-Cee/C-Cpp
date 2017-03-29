@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E11B15BB1E6B2F45000A36EF"
-               BuildableName = "Cpp Project"
-               BlueprintName = "Cpp Project"
-               ReferencedContainer = "container:Cpp Project.xcodeproj">
+               BlueprintIdentifier = "E1B36AB91E881A1100D5289A"
+               BuildableName = "Cpp_Project"
+               BlueprintName = "Cpp_Project"
+               ReferencedContainer = "container:Cpp_Project.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E11B15BB1E6B2F45000A36EF"
-            BuildableName = "Cpp Project"
-            BlueprintName = "Cpp Project"
-            ReferencedContainer = "container:Cpp Project.xcodeproj">
+            BlueprintIdentifier = "E1B36AB91E881A1100D5289A"
+            BuildableName = "Cpp_Project"
+            BlueprintName = "Cpp_Project"
+            ReferencedContainer = "container:Cpp_Project.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E11B15BB1E6B2F45000A36EF"
-            BuildableName = "Cpp Project"
-            BlueprintName = "Cpp Project"
-            ReferencedContainer = "container:Cpp Project.xcodeproj">
+            BlueprintIdentifier = "E1B36AB91E881A1100D5289A"
+            BuildableName = "Cpp_Project"
+            BlueprintName = "Cpp_Project"
+            ReferencedContainer = "container:Cpp_Project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E11B15BB1E6B2F45000A36EF"
-            BuildableName = "Cpp Project"
-            BlueprintName = "Cpp Project"
-            ReferencedContainer = "container:Cpp Project.xcodeproj">
+            BlueprintIdentifier = "E1B36AB91E881A1100D5289A"
+            BuildableName = "Cpp_Project"
+            BlueprintName = "Cpp_Project"
+            ReferencedContainer = "container:Cpp_Project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
