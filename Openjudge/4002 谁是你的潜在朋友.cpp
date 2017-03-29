@@ -16,7 +16,17 @@ using namespace std;
 
 int main(){
     //freopen("/Users/Aoi/Documents/Code/C&Cpp/Cpp_Project/Cpp_Project/data.txt","r",stdin);
-    char rf[10000][3][81],nrf=0,p[400][100][81];
-    
+    int n,m;
+    scanf("%d%d",&n,&m);
+    int s[n],b[m+1];
+    memset(b,-1,sizeof(b));
+    for(int i=0;i<n;i++){
+        scanf("%d",&s[i]);
+        b[s[i]]++;
+    }
+    for(int i=0;i<n;i++){
+        if(b[s[i]]) printf("%d\n",b[s[i]]);
+        else printf("BeiJu\n");
+    }
     return 0;
 }
