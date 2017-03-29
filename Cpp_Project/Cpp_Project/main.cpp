@@ -14,8 +14,18 @@
 #include<memory>
 using namespace std;
 
+class AClass{
+public:
+    string a;
+    AClass(string s){
+        a=s;
+    }
+};
+
 int main(){
     //freopen("/Users/Aoi/Documents/Code/C&Cpp/Cpp_Project/Cpp_Project/data.txt","r",stdin);
-    
+    string a;
+    a="RIN EISHIDEYO";
+    cout<<a<<endl;
     return 0;
 }
