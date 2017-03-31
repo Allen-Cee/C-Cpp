@@ -16,16 +16,14 @@ using namespace std;
 
 int main(){
     //freopen("/Users/Aoi/Documents/Code/C&Cpp/Cpp_Project/Cpp_Project/data.txt","r",stdin);
-    int t;
-    scanf("%d",&t);
-    while(t-->0){
-        int n[5];
-        for(int i=0;i<4;i++){
-            scanf("%d",&n[i]);
-            printf("%d ",n[i]);
-        }
-        if(n[1]-n[0]==n[2]-n[1]&&n[3]-n[2]==n[1]-n[0]) printf("%d\n",n[3]+n[1]-n[0]);
-        else printf("%d\n",n[3]*n[1]/n[0]);
+    int n;
+    scanf("%d",&n);
+    int sum=(n-2)*180;
+    while(--n>0){
+        int tmp;
+        scanf("%d",&tmp);
+        sum-=tmp;
     }
+    printf("%d\n",sum);
     return 0;
 }

@@ -19,13 +19,14 @@ int main(){
     int t;
     scanf("%d",&t);
     while(t-->0){
-        int n[5];
-        for(int i=0;i<4;i++){
-            scanf("%d",&n[i]);
-            printf("%d ",n[i]);
+        int num=0;
+        char hex[9];
+        scanf("%s",hex);
+        for(int i=(int)strlen(hex)-1,j=0;i>=0;i--,j++){
+            if(hex[i]>='A'&&hex[i]<='F') num+=(hex[i]-'A'+10)*pow(16,j);
+            else if(hex[i]>='0'&&hex[i]<='9') num+=(hex[i]-'0')*pow(16,j);
         }
-        if(n[1]-n[0]==n[2]-n[1]&&n[3]-n[2]==n[1]-n[0]) printf("%d\n",n[3]+n[1]-n[0]);
-        else printf("%d\n",n[3]*n[1]/n[0]);
+        printf("%d\n",num);
     }
     return 0;
 }

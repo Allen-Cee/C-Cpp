@@ -16,16 +16,16 @@ using namespace std;
 
 int main(){
     //freopen("/Users/Aoi/Documents/Code/C&Cpp/Cpp_Project/Cpp_Project/data.txt","r",stdin);
-    int t;
-    scanf("%d",&t);
-    while(t-->0){
-        int n[5];
-        for(int i=0;i<4;i++){
-            scanf("%d",&n[i]);
-            printf("%d ",n[i]);
-        }
-        if(n[1]-n[0]==n[2]-n[1]&&n[3]-n[2]==n[1]-n[0]) printf("%d\n",n[3]+n[1]-n[0]);
-        else printf("%d\n",n[3]*n[1]/n[0]);
+    int n;
+    scanf("%d",&n);
+    int x[n],y[n],t[4000],max=0;
+    memset(t,0,sizeof(t));
+    for(int i=0;i<n;i++) scanf("%d",&x[i]);
+    for(int i=0;i<n;i++){
+        scanf("%d",&y[i]);
+        for(int j=x[i];j<y[i];j++) t[j]++;
     }
+    for(int i=0;i<4000;i++) if(max<t[i]) max=t[i];
+    printf("%d\n",max);
     return 0;
 }
