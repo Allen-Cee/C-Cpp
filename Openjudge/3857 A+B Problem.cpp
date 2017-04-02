@@ -16,6 +16,8 @@ using namespace std;
 
 int main(){
     //freopen("/Users/Aoi/Documents/Code/C&Cpp/Cpp_Project/Cpp_Project/data.txt","r",stdin);
-    
+    int a,b;
+    scanf("%d%d",&a,&b);
+    printf("%d\n",a+b);
     return 0;
 }
