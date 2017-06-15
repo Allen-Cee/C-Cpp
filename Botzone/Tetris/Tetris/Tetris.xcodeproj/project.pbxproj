@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1B25E041EEA9FCA004058D1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1B25E031EEA9FCA004058D1 /* main.cpp */; };
+		E16522051EB612F700B0EC70 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16522041EB612F700B0EC70 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E1B25DFE1EEA9FCA004058D1 /* CopyFiles */ = {
+		E16521FF1EB612F700B0EC70 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E1B25E001EEA9FCA004058D1 /* Cpp_Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cpp_Project; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1B25E031EEA9FCA004058D1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E16522011EB612F700B0EC70 /* Tetris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tetris; sourceTree = BUILT_PRODUCTS_DIR; };
+		E16522041EB612F700B0EC70 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E1B25DFD1EEA9FCA004058D1 /* Frameworks */ = {
+		E16521FE1EB612F700B0EC70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,95 +38,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E1B25DF71EEA9FCA004058D1 = {
+		E16521F81EB612F700B0EC70 = {
 			isa = PBXGroup;
 			children = (
-				E1B25E021EEA9FCA004058D1 /* Cpp_Project */,
-				E1B25E011EEA9FCA004058D1 /* Products */,
+				E16522031EB612F700B0EC70 /* Tetris */,
+				E16522021EB612F700B0EC70 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E1B25E011EEA9FCA004058D1 /* Products */ = {
+		E16522021EB612F700B0EC70 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1B25E001EEA9FCA004058D1 /* Cpp_Project */,
+				E16522011EB612F700B0EC70 /* Tetris */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E1B25E021EEA9FCA004058D1 /* Cpp_Project */ = {
+		E16522031EB612F700B0EC70 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
-				E1B25E031EEA9FCA004058D1 /* main.cpp */,
+				E16522041EB612F700B0EC70 /* main.cpp */,
 			);
-			path = Cpp_Project;
+			path = Tetris;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E1B25DFF1EEA9FCA004058D1 /* Cpp_Project */ = {
+		E16522001EB612F700B0EC70 /* Tetris */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1B25E071EEA9FCA004058D1 /* Build configuration list for PBXNativeTarget "Cpp_Project" */;
+			buildConfigurationList = E16522081EB612F700B0EC70 /* Build configuration list for PBXNativeTarget "Tetris" */;
 			buildPhases = (
-				E1B25DFC1EEA9FCA004058D1 /* Sources */,
-				E1B25DFD1EEA9FCA004058D1 /* Frameworks */,
-				E1B25DFE1EEA9FCA004058D1 /* CopyFiles */,
+				E16521FD1EB612F700B0EC70 /* Sources */,
+				E16521FE1EB612F700B0EC70 /* Frameworks */,
+				E16521FF1EB612F700B0EC70 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Cpp_Project;
-			productName = Cpp_Project;
-			productReference = E1B25E001EEA9FCA004058D1 /* Cpp_Project */;
+			name = Tetris;
+			productName = Tetris;
+			productReference = E16522011EB612F700B0EC70 /* Tetris */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E1B25DF81EEA9FCA004058D1 /* Project object */ = {
+		E16521F91EB612F700B0EC70 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Aoi;
 				TargetAttributes = {
-					E1B25DFF1EEA9FCA004058D1 = {
+					E16522001EB612F700B0EC70 = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = E1B25DFB1EEA9FCA004058D1 /* Build configuration list for PBXProject "Cpp_Project" */;
+			buildConfigurationList = E16521FC1EB612F700B0EC70 /* Build configuration list for PBXProject "Tetris" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = E1B25DF71EEA9FCA004058D1;
-			productRefGroup = E1B25E011EEA9FCA004058D1 /* Products */;
+			mainGroup = E16521F81EB612F700B0EC70;
+			productRefGroup = E16522021EB612F700B0EC70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E1B25DFF1EEA9FCA004058D1 /* Cpp_Project */,
+				E16522001EB612F700B0EC70 /* Tetris */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E1B25DFC1EEA9FCA004058D1 /* Sources */ = {
+		E16521FD1EB612F700B0EC70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1B25E041EEA9FCA004058D1 /* main.cpp in Sources */,
+				E16522051EB612F700B0EC70 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E1B25E051EEA9FCA004058D1 /* Debug */ = {
+		E16522061EB612F700B0EC70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -174,7 +174,7 @@
 			};
 			name = Debug;
 		};
-		E1B25E061EEA9FCA004058D1 /* Release */ = {
+		E16522071EB612F700B0EC70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -215,14 +215,14 @@
 			};
 			name = Release;
 		};
-		E1B25E081EEA9FCA004058D1 /* Debug */ = {
+		E16522091EB612F700B0EC70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		E1B25E091EEA9FCA004058D1 /* Release */ = {
+		E165220A1EB612F700B0EC70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -232,24 +232,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1B25DFB1EEA9FCA004058D1 /* Build configuration list for PBXProject "Cpp_Project" */ = {
+		E16521FC1EB612F700B0EC70 /* Build configuration list for PBXProject "Tetris" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1B25E051EEA9FCA004058D1 /* Debug */,
-				E1B25E061EEA9FCA004058D1 /* Release */,
+				E16522061EB612F700B0EC70 /* Debug */,
+				E16522071EB612F700B0EC70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1B25E071EEA9FCA004058D1 /* Build configuration list for PBXNativeTarget "Cpp_Project" */ = {
+		E16522081EB612F700B0EC70 /* Build configuration list for PBXNativeTarget "Tetris" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1B25E081EEA9FCA004058D1 /* Debug */,
-				E1B25E091EEA9FCA004058D1 /* Release */,
+				E16522091EB612F700B0EC70 /* Debug */,
+				E165220A1EB612F700B0EC70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E1B25DF81EEA9FCA004058D1 /* Project object */;
+	rootObject = E16521F91EB612F700B0EC70 /* Project object */;
 }

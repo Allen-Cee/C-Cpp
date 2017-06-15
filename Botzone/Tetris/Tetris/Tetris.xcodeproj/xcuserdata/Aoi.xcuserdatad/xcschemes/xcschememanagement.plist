@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Cpp_Project.xcscheme</key>
+		<key>Tetris.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E1B25DFF1EEA9FCA004058D1</key>
+		<key>E16522001EB612F700B0EC70</key>
 		<dict>
 			<key>primary</key>
 			<true/>

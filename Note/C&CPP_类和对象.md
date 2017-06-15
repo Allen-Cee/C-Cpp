@@ -52,7 +52,7 @@
 
   静态成员函数中不能有非静态成员变量和非静态成员函数，因为静态成员函数不属于某个对象，而属于同一类共有
 
-* 常量成员函数的`const`关键字在函数名后面`void FUN()const{}`，其内不能改变属性的值，也不能调用非常量成员函数
+* 常量成员函数的`const`关键字在函数名后面`void FUN()const{}`，其内不能改变属性的值，也不能调用非常量成员函数；`const`在函数名后面的情况只对成员函数
 
   常量对象不能改变属性值，同一个函数加或不加`const`属性算重载，区别在于常量对象优先调用常量成员函数
 
@@ -105,7 +105,7 @@
 
 #### 转换构造函数
 
-* 即普通构造函数，在其他类型变量对该类对象赋值时，先用该变=变量生成临时对象，再按位拷贝（**不是调用复制构造函数**）
+* 即普通构造函数，在其他类型变量对该类对象赋值时，先用该变量生成临时对象，再按位拷贝（**不是调用复制构造函数**）
 
 #### 复制构造函数
 
@@ -182,8 +182,10 @@
 
 * 强制类型转换符：重载为成员函数，在运行中需要调用的时候自动强制转换当前类类型；无返回值类型，有返回值；形参为空
 
+  因为通常不改变对象，可以声明为常量成员函数
+
   ```c++
-  operator int(){
+  operator int() const {
     return n;
   }
   ```
@@ -233,7 +235,7 @@
   必须传入和返回引用，因为`cin`和`cout`不能复制
 
   ```c++
-  friend istream & operator>>(istream &i,const AClass &c){
+  friend istream & operator>>(istream &i,AClass &c){//不能const
     i>>c.n;
     return i;
   }
@@ -246,14 +248,14 @@
 
 * 自增/自减运算符：前置运算符为一元运算符，后置运算符为二元运算符（第二个参数无用）；即作为成员函数时，前置不带参数，后置带一个无用的`int`参数
 
-  后置运算符因为返回原值，同时还要修改现值，故返回一个复制构造函数构造的临时对象
+  后置运算符因为返回原值，同时还要修改现值，故返回一个复制构造函数构造的临时对象（因此不返回引用）
 
   ```c++
   AClass & operator++(){
     n++;
     return *this;
   }
-  AClass & operator++(int u){
+  AClass operator++(int u){
     AClass tmp(*this);
     n++;
     return tmp;
@@ -263,7 +265,7 @@
 
 #### 注意
 
-* 不能重载的运算符：`.`、`.*`、`::`、`?:`、`sizeof`
+* 不能重载的运算符：`.`、`.*`、`::`、`?:`、`sizeof`、`#`、`##`等
 * 必须重载为成员函数：`()`、`[]`、`->`、`=`
 * 对于双目运算符，既要支持做操作数为类的对象，又要支持为非类对象，则前者重载为成员函数，后者重载为友元函数
 
@@ -278,13 +280,16 @@
     
   };
   class DClass:public BClass{
-    
+  public:
+    DClass():BClass(...){}
   };
   ```
 
-* 派生类继承基类全部成员，相当于独立重用，但继承的成员仍然看作基类（另一个类）的成员，可访问范围受继承的限制；即一旦继承后，操作基类和派生类成员是不同的
+* 执行派生类构造函数前要先执行基类构造函数（再执行其他成员如封闭类的构造函数），如果涉及基类`private`成员则要在初始化列表初始化
 
-* 执行派生类构造函数前要先执行基类构造函数，如果涉及基类`private`成员则要在初始化列表初始化
+  构造函数不会自动继承
+
+  如要使派生类对象具有基类的全部功能（可以当作基类使用），则在初始化列表初始化；即具有了一个类型形式是派生类的基类对象，派生类中其他功能也可以使用
 
   析构时先析构派生类再析构基类
 
@@ -298,6 +303,226 @@
 
     此时指针指向派生类对象（中的基类对象），不能访问派生类对象中的其他成员，但可以通过强制类型转换为派生类指针访问
 
+* 派生类函数与基类函数关系（返回值无关）
+
+  * 重载：同一类（同一范围中）定义，名字相同，参数不同
+
+  * 覆盖：基类虚函数和派生类函数，名字相同，参数相同，基类指针调用多态
+
+  * 重写：基类函数和派生类函数，名字相同，参数不同；基类非虚函数和派生类函数，名字相同，参数相同（只能通过指针类型不同调用，无多态性）
+
+    重写如果不使用指针，只能通过`derived.base::Func()`调用
+
 * 多层继承只需要继承直接基类，直接基类会自动继承间接基类
 
 * 派生类中的基类和封闭类中的成员对象在空间上是相似的，但是逻辑概念不同（独立性不同、访问主体不同）
+
+  和封闭类的区别是，再定义一个封闭类，需要通过当前对象间接访问其中的封闭类对象；直接调用当前对象会先检查调用基类的函数，没有初始化则拥有无参构造的基类对象并执行其函数等
+
+## 多态
+
+#### 多态的实现
+
+* 普通情况下，函数调用通过指针类型决定调用基类还是派生类中的同名函数
+
+  多态情况下，将基类中的同名函数声明为`virtual`（且只在声明中使用），可以通过基类指针引用的对象类型实现基类或派生类的函数调用
+
+  ```c++
+  class AClass{
+  public:
+    virtual void SayHiV(){cout<<"AClassV"<<endl;}
+    void SayHi(){cout<<"AClass"<<endl;}
+  };
+
+  class BClass:public AClass{
+  public:
+    void SayHiV(){cout<<"BClassV"<<endl;}
+    void SayHi(){cout<<"BClass"<<endl;}
+  };
+
+  void FuncPa(AClass *pa){
+    pa->SayHiV();
+    pa->SayHi();
+  }
+
+  void FuncPb(BClass *pb){
+    pb->SayHi();
+  }
+
+  int main(){
+    AClass oa;
+    BClass ob;
+    FuncPa(&oa); //AClassV \n AClass
+    FuncPa(&ob); //BClassV \n AClass
+    //FuncPb(&oa); 不能将原生基类对象强制赋给派生类指针！
+    FuncPb(&ob); //BClass
+    return 0;
+  }
+  ```
+
+* 多态实际上是对具有继承和派生关系的量，在需要函数重载（需要对这些派生类做同一种处理）的时候，可以统一抽象处理（使基类指针在不同情况指向不同派生类对象），原来重载的函数就可以不用重复写了
+
+#### 多态注意点
+
+* 访问权限：根据指针类型检查，因此基类虚函数需要声明为公有（派生类同名覆盖函数为私有则没有关系，因为多态时为基类指针）
+
+* 基类指针指向派生类对象，会优先选择符合多态的函数
+
+* ```c++
+  class AClass{
+  public:
+    virtual void Func() const {cout<<"AFunc"<<endl;}
+    virtual void Func(int n=0){cout<<"AFunc(int)"<<endl;}
+    //两个非虚函数可以这样重载 但不能调用Func()
+  };
+
+  class BClass{
+  public:
+    void Func(){cout<<"BFunc"<<endl;}
+    void Func(int n){cout<<"BFunc(int)"<<endl;}
+  }
+
+  int main(){
+    AClass oa,*pa;
+    BClass ob;
+    pa=&ob;
+    pa->Func(); //AFunc(int) 因为Func() const 和Func()不满足多态
+    return 0;
+  }
+  ```
+
+* 先非多态地调用基类或派生类的函数，函数内再调用函数，仍然要根据多态性调用
+
+  * 构造函数不能多态调用，因为还没有生成虚函数表
+  * 析构函数也不能调用体现多态
+
+* 基类析构函数一般一定要定义为虚函数（这样才会根据对象对派生类析构，再析构基类），以免通过基类指针销毁派生类对象时只调用了基类的析构函数
+
+* 构造函数不能声明为虚函数
+
+#### 纯虚函数
+
+* 纯虚函数：没有函数体的虚函数
+
+  抽象类：包含纯虚函数的类
+
+  ```c++
+  class AClass{
+  public:
+    virtual void Func()=0;
+  };
+  ```
+
+* 抽象类只能作为基类，不能创建抽象类对象；可以定义其指针/引用，但也只能指向派生类对象
+
+  继承的派生类如果没有实现纯虚函数的多态，则仍然是抽象类
+
+* 抽象类的成员函数可以调用纯虚函数，但构造/析构函数不能
+
+
+## 模版
+
+#### 函数模版
+
+```c++
+template<class T>
+T Func(T &a,T &b){
+  T tmp=a;
+  a=b;
+  b=tmp;
+  return a;
+}
+
+template<typename T>
+void Func(T &a){}
+```
+
+* 函数模版与重载的区别：重载是传入参数不同，模版要求参数相同（或参数有初始化时缺省参数）
+* 函数匹配
+  1. 找参数完全匹配的函数
+  2. 找参数完全匹配的函数模版
+  3. 无二义性的情况下，找参数经过自动转换后能够匹配的函数
+
+#### 类模版
+
+```c++
+template<class T1,class T2,...>
+class AClass{
+public:
+  T1 n;
+  void Func(T2 a);
+};
+template<class T1,class T2,...>
+void AClass<T1,T2,...>::Func(T2 a){}
+```
+
+* 同一个类模版的两个实例化不同的模版类不兼容
+
+* 除了定义，任何时候使用类模版对象需要在类名后声明真是类型`AClass<int,double,...> c(2.5);`
+
+* 同一类实例化的模版类共享同样的静态成员
+
+* 静态成员一定在类外初始化
+
+  ```c++
+  template<class T>
+  class AClass{
+  public:
+    static int n1;
+    static T n2;
+  };
+  template<>
+  double AClass<double>::n2=5.2;
+  template<class T>
+  int AClass<T>::n1=120;
+  ```
+
+* 非类型参数
+
+  非类型参数必须实例化
+
+  局部变量不能用作非类型参数
+
+  ```c++
+  template<class T,int n>
+  class AClass{
+  public:
+    T array[n];
+  };
+
+  int main(){
+    int n=10;
+    AClass<int,10> c;
+    //AClass<int,n> c2; 错误 局部变量不能用作非类型参数
+    return 0;
+  }
+  ```
+
+#### 类模版与继承
+
+* 类模版派生类模版
+
+  ```c++
+  template<class T1,class T2>
+  class BClass{};
+
+  template<class T1,class T2>
+  class DClass:public BClass<T2,T1>{};
+  ```
+
+* 模版类派生类模版（相当于前者继承时实例化）
+
+  ```c++
+  template<class T1,class T2>
+  class BClass{};
+
+  template<class T1,class T2>
+  class DClass:public BClass<int,double>{};
+  ```
+
+* 普通类派生类模版
+
+* 模版类派生普通类
+
+## I/O
+

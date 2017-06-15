@@ -2,6 +2,21 @@
 
 
 
+## 位运算
+
+* 与`&`：均为1得1，否则0
+  * 用于将某些位数清零
+  * 用于检查特定位数是否为1
+* 或`|`：均为0得0，否则1
+  * 用于将某些位数变1
+  * 用于检查特定位数是否为0
+* 取反`~`：1变0，0变1
+  * 用于将特定位数取反
+
+
+
+
+
 ## 函数
 
 #### 空间回收
@@ -57,6 +72,8 @@
 
 引用是特殊的指针，不需要`*`来区别访问地址还是内容
 
+引用不占用存储空间，出现引用的地方直接用原值替换
+
 ```c++
 type & referencename=variationname
 ```
@@ -70,6 +87,36 @@ type & referencename=variationname
   - 全局变量或`static`类型的静态局部变量
   - 引用类型的参数
   - 对象或其成员
+
+
+#### 函数指针
+
+* 定义
+
+  ```c++
+  Type (*pFuncName)(Type1 a,Type2 b,...)=Func;
+  //pFuncName=Func;
+  //pFuncName(...); 直接调用
+  ```
+
+* 使用
+
+  * 作为函数参数时
+
+    ```c++
+    void Func(int (*pF)(int *)){}
+    //template<class T>
+    //class Func{public:void operator()(T pF){};};
+
+    void F(int *a){}
+
+    int main(){
+      int n=2;
+      Func(F(n));
+      //Func<int (*)(int *)>(F);
+      return 0;
+    }
+    ```
 
 
 
@@ -95,7 +142,22 @@ type & referencename=variationname
 #### `const`关键字
 
 * `const`表示分配储存空间后立即初始化，并且不再允许修改
+
 * 对于指针，可以先不赋值；但后续只能用非`const`指针赋值`const`指针而不能相反
+
+  * 指针内容不能改变，但指针可以改变
+
+    ```c++
+    char * p1="Alice";
+    char * p2="Bob";
+    const char * p=p1;
+    p=p2;//合法
+    ```
+
+* 常引用可以引用非`const`值，但不能修改引用，只能修改原值
+
+  常变量只能赋值给常引用（即引用只能引用变量，因为常量均是直接替换，不占用存储空间）
+
 * 不改变变量时尽量使用`const`，因为运算符重载，例如`<<`和`=`右侧都要求对象为`const`，特别是返回值为临时对象时，为了识别赋值，必须声明形参为`const`
 
 #### `static`关键字
@@ -103,3 +165,4 @@ type & referencename=variationname
 * `static`相当于全局变量
 * 类的`static`属于同一类共有
 * 在类中使用`static`需要在类外像全局变量一样声明或初始化
+  * `static`的初始化需要在类外部进行
